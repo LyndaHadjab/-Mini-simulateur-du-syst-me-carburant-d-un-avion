@@ -11,14 +11,12 @@ using namespace std;
 //et son etat :en panne ou non
 class Pompe
 {
-
    public:
 
     string nom;
     bool estpanne;
 
-public:
-
+  public:
 
     Pompe(string nom);
 
@@ -32,11 +30,11 @@ public:
 
     friend istream&operator>>(istream&flux,Pompe*p);
 
-   friend ostream&operator<<(ostream&flux,Pompe*p);
+    friend ostream&operator<<(ostream&flux,Pompe*p);
 
     Pompe(Pompe *p);
-
-      ~Pompe();
+    
+    ~Pompe();
 
     string getNom();
 
@@ -46,9 +44,7 @@ public:
 
     void SetPanne(bool panne);
 
-     void afficherpompe();
-
-
+    void afficherpompe();
 };
 
 #endif // POMPE_H

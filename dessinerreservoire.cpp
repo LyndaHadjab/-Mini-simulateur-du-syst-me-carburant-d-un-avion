@@ -18,11 +18,6 @@ QPointF reservoiredessin::pointDeConnexion()
     return QPointF(_dp.x()+15.5, _dp.y()-(_hauteur+20));
 }
 
-
-
-
-
-
 QRectF reservoiredessin::boundingRect() const
 {
     return QRectF(_dp.x(), _dp.y(), 15, 15);
@@ -32,27 +27,17 @@ void reservoiredessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 {
     qreal x = _dp.x();
     qreal y = _dp.y();
-
     qreal sx = x+25;
-
     qreal rx = x+17.5;
     qreal ry = y-13;
-
 
     QRectF primRect = boundingRect();
     QRectF secRect = QRectF(sx, y, 15, 15);
 
-
-
     QRectF inRect1 = QRectF(x+5, y+5, 5, 5);
     QRectF inRect2 = QRectF(x+30, y+5, 5, 5);
 
-
-
-
-
     QRectF ralRect = QRectF(rx-1, ry-_hauteur, 7, _hauteur);
-
 
     QPolygonF polygonePrim, polygoneSec;
 
@@ -61,8 +46,6 @@ void reservoiredessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 
     polygoneSec << QPoint(rx+5, ry)  << QPoint(sx+10, ry) << QPoint(sx+10, y)
                  << QPoint(sx+5, y) << QPoint(sx+5, y-5) << QPoint(rx+5, ry+5);
-
-
 
 
     painter->drawText(x+1, y+28, "P1");
@@ -75,30 +58,20 @@ void reservoiredessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *
     painter->drawPolygon(polygonePrim);
     painter->drawPolygon(polygoneSec);
 
-    if (bPrimMarche && _bcirculer)
-    {
+    if (bPrimMarche && _bcirculer) {
         painter->fillPath(pathPrim, _carbColor);
-    }
-
-    else
-    {
+    } else {
         painter->fillPath(pathPrim, brushDefault);
     }
 
-    if (bSecMarche && _bcirculer)
-    {
+    if (bSecMarche && _bcirculer) {
         painter->fillPath(pathSec, _carbColor);
-    }
-
-    else
-    {
+    } else {
         painter->fillPath(pathSec, brushDefault);
     }
 
-
     painter->fillRect(primRect, brushDefault);
     painter->fillRect(secRect, brushDefault);
-
 
     // points de connexions
 
@@ -110,52 +83,32 @@ void reservoiredessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *
 
     painter->drawRect(ralRect);
 
-
-
-
-
-
-
     // coloriage des cercles avec ou sans panne
 
-    if (bPrimPanne)
-    {
+    if (bPrimPanne) {
         painter->setBrush(Qt::red);
         painter->drawEllipse(primRect);
         painter->setBrush(brushDefault);
         painter->drawEllipse(inRect1);
-    }
-
-    else
-    {
+    } else {
         painter->setBrush(brushDefault);
         painter->drawEllipse(primRect);
         painter->setBrush(Qt::yellow);
         painter->drawEllipse(inRect1);
     }
 
-    if (bSecPanne)
-    {
+    if (bSecPanne) {
         painter->setBrush(Qt::red);
         painter->drawEllipse(secRect);
         painter->setBrush(brushDefault);
         painter->drawEllipse(inRect2);
-    }
-
-    else
-    {
+    } else {
         painter->setBrush(brushDefault);
         painter->drawEllipse(secRect);
         painter->setBrush(Qt::blue);
         painter->drawEllipse(inRect2);
     }
-
-
 }
-
-
-
-
 
 void reservoiredessin::setpmarche(bool value)
 {
@@ -167,16 +120,13 @@ void reservoiredessin::setsmarche(bool value)
     bSecMarche = value;
 }
 
-
 void reservoiredessin::setppanne(bool value)
 {
-
     if (value)
         setpmarche(false);
 
     bPrimPanne = value;
 }
-
 
 void reservoiredessin::setspanne(bool value)
 {

@@ -13,64 +13,60 @@
 using namespace std;
 class moteur
 {
-private:
-    string nom;//nom du réservoire
+       private:
+              string nom;//nom du réservoire
 
-    double quantiteconsmm;//quantité de consommation du réservoire
+              double quantiteconsmm;//quantité de consommation du réservoire
 
-      Reservoire *sonreservoire;//le réservoir alimentant du moteur
+              Reservoire *sonreservoire;//le réservoir alimentant du moteur
 
-      bool verifsialimenter;//pour voir si le moteur est alimenté par l'un des réservoires
+              bool verifsialimenter;//pour voir si le moteur est alimenté par l'un des réservoires
 
-     canaldessin *canalmoteur;//adresse du canal graphic reliant le moteur
+              canaldessin *canalmoteur;//adresse du canal graphic reliant le moteur
 
-       bool moteurpanne;//verifier si le moteur a subi une panne c est a dire aucun réservoire ne l'alimente
+              bool moteurpanne;//verifier si le moteur a subi une panne c est a dire aucun réservoire ne l'alimente
 
+       public:
 
-public:
+              moteur(string nom,double quantitconsmm);//le nom du moteur et la quantite de consommation
+              
+              moteur(moteur*m);
 
-       moteur(string nom,double quantitconsmm);//le nom du moteur et la quantite de consommation
+              friend ostream&operator<<(ostream&flux,moteur*m);
 
-        moteur(moteur*m);
+              moteur&operator=(moteur*m);
 
-     friend ostream&operator<<(ostream&flux,moteur*m);
+              ~moteur();//détruit l'objet moteur
 
-          moteur&operator=(moteur*m);
+              string getName();//recupérer le nom du moteur
 
-          ~moteur();//détruit l'objet moteur
+              double getQuantite();//récuperer la quantite de consommation du moteur
 
-       string getName();//recupérer le nom du moteur
+              void setName(string name);//changer le nom du moteur
 
-       double getQuantite();//récuperer la quantite de consommation du moteur
+              void setQuantite(double quantite);//changer la quantite de consommation du moteur
 
-       void setName(string name);//changer le nom du moteur
+              void afficher();//afficher le moteur
 
-      void setQuantite(double quantite);//changer la quantite de consommation du moteur
+              bool estalimenter();//verifier si le moteur est alimenter
 
-       void afficher();//afficher le moteur
+              Reservoire* AdresseSonreservoire();//adresse du reservoire qui l'alimente
 
+              void initialisermoteur(Reservoire* reser,int quantite=0);//changer la quatiter d consommation
 
-       bool estalimenter();//verifier si le moteur est alimenter
+              string getnomreservoirealimentant();//recupere le nom du reservoire alimentant
 
-       Reservoire* AdresseSonreservoire();//adresse du reservoire qui l'alimente
+              void modifierReservoirealimentant(Reservoire *reservoire);//modier le réservoire alimentant de moteur
 
-       void initialisermoteur(Reservoire* reser,int quantite=0);//changer la quatiter d consommation
+              void supprimerReservoirealimentant();//supprimer réservoire alimentant
 
-       string getnomreservoirealimentant();//recupere le nom du reservoire alimentant
+              canaldessin* canalmoteurgraphic() const;//permet recupere la canal du moteur fraphiquement
 
-       void modifierReservoirealimentant(Reservoire *reservoire);//modier le réservoire alimentant de moteur
+              void ajoutercanal(canaldessin* canal);//ajouter une autre canal qui relier le moteur graphiquement
 
-       void supprimerReservoirealimentant();//supprimer réservoire alimentant
+              void modifiercanal(bool b);//modifier etat canal
 
-
-       canaldessin* canalmoteurgraphic() const;//permet recupere la canal du moteur fraphiquement
-
-       void ajoutercanal(canaldessin* canal);//ajouter une autre canal qui relier le moteur graphiquement
-
-       void modifiercanal(bool b);//modifier etat canal
-
-       void activeControlePanne();
-
+              void activeControlePanne();
 };
 
 #endif // MOTEUR_H

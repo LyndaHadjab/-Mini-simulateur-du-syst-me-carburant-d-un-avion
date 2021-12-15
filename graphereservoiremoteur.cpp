@@ -37,16 +37,12 @@ void grapherm::updateBarValues(int val1, int val2, int val3)
     res3progbar->setValue(val3);
 }
 
-
-
 void grapherm::updateResMoteur(const QString& s1, const QString& s2, const QString& s3)
 {
     Mres1 = s1;
     Mres2 = s2;
     Mres3 = s3;
 }
-
-
 
 // Drawing
 QRectF grapherm::boundingRect() const
@@ -66,13 +62,13 @@ void grapherm::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
 
     painter->setBrush(brushDefault);
-  painter->drawText(QRectF(z+50, y-15, 100, 13), "Etat moteurs", QTextOption(Qt::AlignCenter));
+    painter->drawText(QRectF(z+50, y-15, 100, 13), "Etat moteurs", QTextOption(Qt::AlignCenter));
    //la position du texte Carburant Quantité
 
     painter->drawRoundedRect(rectValues, 5, 4);//cadre autour du texte
-      painter->fillRect(QRectF(x-90, y-9, 100, 13), brushDefault);
+    painter->fillRect(QRectF(x-90, y-9, 100, 13), brushDefault);
 
-     painter->drawText(QRectF(x-90, y-9, 100, 13), "Carburant Quantité", QTextOption(Qt::AlignCenter));
+    painter->drawText(QRectF(x-90, y-9, 100, 13), "Carburant Quantité", QTextOption(Qt::AlignCenter));
 
     painter->drawText(QRectF(x-90, y+10, 71, 12), "TANK1", QTextOption(Qt::AlignCenter));
     painter->drawText(QRectF(x-90, y+60, 71, 12), "TANK2", QTextOption(Qt::AlignCenter));
@@ -97,10 +93,7 @@ void grapherm::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     painter->drawText(QRectF(z+83.5, y+27, 71, 12), Mres2, QTextOption(Qt::AlignCenter));
     painter->drawText(QRectF(z+157, y+27, 71, 12), Mres3, QTextOption(Qt::AlignCenter));
 
-
-
 }
-
 
 grapherm::~grapherm()
 {
@@ -108,4 +101,3 @@ grapherm::~grapherm()
     delete res2progbar;
     delete res3progbar;
 }
-

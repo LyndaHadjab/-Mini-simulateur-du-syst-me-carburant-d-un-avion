@@ -5,14 +5,10 @@ class moteurgraphe : public graphegenerale
 {
 public:
     moteurgraphe(QString nom, qreal x, qreal y);
-     ~moteurgraphe();
+    ~moteurgraphe();
     QPointF centre() ;
-
-
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-
-
 
 private:
     QPointF _dp;

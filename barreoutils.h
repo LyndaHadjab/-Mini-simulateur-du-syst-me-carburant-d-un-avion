@@ -16,22 +16,17 @@
 
 class Boutil : public QToolBar
 {
-
-
     friend class pageprincipale;
     friend class ClassePrincipale;
-
 
 public:
     Boutil();
     ~Boutil();
     void reset();
 
-
-
 private:
 
-   QPushButton *actionidf;
+    QPushButton *actionidf;
 
     QPushButton *log_out;
 
@@ -48,10 +43,7 @@ private:
     QPushButton *actionpannesecours;
     QPushButton *actionviderRes;
 
-      QPushButton*choix;
-
-
-
+    QPushButton*choix;
 };
 
 #endif // Boutil_H

@@ -4,12 +4,8 @@ vannedessin::vannedessin(QString nom, qreal x, qreal y, int brush) : graphegener
 {
     ouvert = true;
     _bcirculer = false;
-
     this->nom = nom;
-
     _canalObserver.reserve(2);
-
-    // Couleur par défaut
 
     if (brush == 0)
         _carbColor = brushDefault;
@@ -48,11 +44,6 @@ void vannedessin::setBcirculer(bool bcirculer)
     }
 }
 
-
-
-
-
-
 // Renvoie le point centre de la vanne
 
 QPointF vannedessin::centre()
@@ -70,8 +61,7 @@ void vannedessin::setCarbColor(const QBrush &carbColor)
 {
     _carbColor = carbColor;
 
-    for (int i = 0; i < _canalObserver.size(); i++)
-    {
+    for (int i = 0; i < _canalObserver.size(); i++) {
         _canalObserver[i]->changecolor(_carbColor);
     }
 }
@@ -81,17 +71,10 @@ bool vannedessin::bcirculer()
     return _bcirculer;
 }
 
-
-
-
-
-
 void vannedessin::addObserver(canaldessin *canal)
 {
     _canalObserver.push_back(canal);
 }
-
-
 
 // Fonctions de paint
 
@@ -99,6 +82,7 @@ QRectF vannedessin::boundingRect() const//pour dessiner un cercle
 {
     return QRectF(_dp.x(), _dp.y(), 20, 20);
 }
+
 //procedure permet de dessiner la vanne dans deux cas :
 //le cas ou la vanne est fermer et le cas ou la vanne est ouvert
 void vannedessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -116,8 +100,7 @@ void vannedessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QLine extLine1(x, y+6, x+20, y+6);
     QLine extLine2(x, y+13.5, x+20, y+13.5);
 
-    if (!ouvert)
-    {
+    if (! ouvert) {
         QRectF r(x-1, y+6.5, 25, 9);
         opcRect = r;
 
@@ -126,10 +109,7 @@ void vannedessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
         else
             brush = brushDefault;
-    }
-
-    else
-    {
+    } else {
         //si la vanne est ouvert on le dessine vert ||
         QRectF r(x+7.5, y, 5, 20);
         opcRect = r;
@@ -137,27 +117,19 @@ void vannedessin::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     }
 
     painter->fillRect(rect, brushDefault);
-
-
-
     painter->drawEllipse(rect);
 
     painter->fillRect(opcRect, brush);
 
     painter->drawText(x+0.5, y-3, this->nom);    // nom de la vanne le mettre a une position
 
-    if (!ouvert)
-    {
+    if (! ouvert) {
         painter->setPen(extPen);
         painter->drawLine(extLine1);
         painter->drawLine(extLine2);
     }
 
 }
-
-
-
-// Destructeur
 
 vannedessin::~vannedessin()
 {

@@ -2,7 +2,7 @@
 
 Pompesecour::Pompesecour(string nom):Pompe(nom)
 {
-    marche=false;
+    marche = false;
 }
 
 bool Pompesecour:: Enmarche()
@@ -10,34 +10,33 @@ bool Pompesecour:: Enmarche()
     return  marche;
 }
 
-
 //destructeur
 Pompesecour::~Pompesecour()
 {
    cout<<"destruction"<<endl;
 }
+
 //redifinition de l'opérateur =
 Pompesecour& Pompesecour::operator=(const Pompesecour&ps)
 {
-   estpanne=ps.estpanne;
-   marche=ps.marche;
-   nom=ps.nom;
+   estpanne = ps.estpanne;
+   marche = ps.marche;
+   nom = ps.nom;
    return *this;
 }
-
 
 void Pompesecour:: setMarche(bool marche)
 {
     //avant de la mettre en marcheen verifier si ellen est pas en panne
-    if(marche==true)
+    if(marche)
     {
-        if(estpanne==false)
+        if(! estpanne)
         {
-            this->marche=true;
+            this->marche = true;
         }
         else
         {
-            if(estpanne==true)
+            if(estpanne == true)
            {
 
                 cout<<"la pompe de secour :"<<nom<<"est en panne"<<" on peut pas la mettre en marche" <<endl;

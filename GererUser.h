@@ -1,4 +1,3 @@
-
 #ifndef GERERUSER_H
 #define GERERUSER_H
 #include <iostream>
@@ -12,11 +11,10 @@
 
 using namespace std;
 
-
 class toutuser
 {
-private:
 
+private:
 
     vector<user> listeuser;
 
@@ -24,27 +22,16 @@ public:
 
     toutuser();
 
-     ~toutuser();
+    ~toutuser();
 
     bool ajouteruser(const string& identif, const string& motDePasse);
 
     void ajouteruser(const user& user);
-
-
-
 
     void sauverBase();
 
     user* rechercheruser(const string& id, const string& mdp);
 
     void afficher();
-
-
-
-
-
-
-
-
 };
 #endif // GERERUSER_H

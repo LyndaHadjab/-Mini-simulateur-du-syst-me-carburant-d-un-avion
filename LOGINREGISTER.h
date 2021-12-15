@@ -23,12 +23,8 @@ class Loginregister : public QWidget
 public:
     Loginregister(bool cnx);
     ~Loginregister();
-
     void connexion();
     void inscrire();
-
-
-
 
 private:
     QLineEdit *identifiant;
@@ -36,11 +32,10 @@ private:
 
     QPushButton *buttonconnexion;
     QPushButton *buttoninscription;
-   QAction *creerCompte;
+    QAction *creerCompte;
 
     QAction *connecter;
     QLabel  *header;
-
 
     QLabel *identilabel;
     QLabel *passwordlabel;
